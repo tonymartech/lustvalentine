@@ -1,24 +1,18 @@
 body {
   text-align: center;
   margin-top: 30px;
-  font-family: "Courier";
-  background-color: #fff5e4;
-  color: #ff9494;
-  display: flex;
-  flex-direction: column;
-}
-h1 {
-  font-size: 40px;
+  font-family: "DFVN TAN-NIMBUS"; /* Updated font */
+  background-color: #000000; /* Updated background color */
+  color: #e3679f; /* Updated text color */
 }
 
-form .header {
-  width: 100%;
-  display: flex;
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #ff9494;
+/* Retain existing styles */
+#datequestion {
+  font-size: 50px;
+  margin-bottom: 30px;
 }
 
+/* Additional styles as needed */
 .form-group {
   display: flex;
   flex-direction: column;

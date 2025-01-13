@@ -3,60 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Thank You</title>
     <link rel="stylesheet" href="css/flower.css" />
+    <style>
+      /* Popup styles */
+      .popup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+    </style>
   </head>
   <body>
     <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
     <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
-          ></div>
-        </div>
-      </div>
-
-      <div class="f-wrapper f-wrapper--2">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
-          ></div>
-        </div>
-      </div>
-
-      <div class="f-wrapper f-wrapper--3">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
-          ></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
+      <!-- Flower animations here -->
     </div>
+
+    <button class="button" onclick="showPopup()">Show Selections</button>
+
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+      <h2>Your Selections</h2>
+      <div id="selections"></div>
+      <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+      function showPopup() {
+        const selections = [];
+
+        // Get food selections
+        const foodItems = document.querySelectorAll('input[name="food"]:checked');
+        foodItems.forEach(item => {
+          selections.push(`Food: ${item.value}`);
+        });
+
+        // Get dessert selections
+        const dessertItems = document.querySelectorAll('input[name="dessert"]:checked');
+        dessertItems.forEach(item => {
+          selections.push(`Dessert: ${item.value}`);
+        });
+
+        // Get activities selections
+        const activityItems = document.querySelectorAll('input[name="activities"]:checked');
+        activityItems.forEach(item => {
+          selections.push(`Activity: ${item.value}`);
+        });
+
+        // Get page 8 selections (replace 'page8' with the actual name attribute)
+        const page8Items = document.querySelectorAll('input[name="page8"]:checked');
+        page8Items.forEach(item => {
+          selections.push(`Page 8: ${item.value}`);
+        });
+
+        // Display selections in the popup
+        document.getElementById('selections').innerText = selections.join('\n') || 'No selections made.';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+      }
+
+      function closePopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+      }
+    </script>
   </body>
 </html>
